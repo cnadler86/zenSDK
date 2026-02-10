@@ -180,6 +180,6 @@ curl -X POST "http://<ip-appareil>/properties/write" \
 # 📚 Référence des propriétés
 
 Pour le détail des propriétés de chaque produit :
-[Documentation des propriétés SolarFlow](./fr_properties.md)
+[Documentation des propriétés SolarFlow](./en_properties.md)
 
 ---
