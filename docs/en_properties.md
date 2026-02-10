@@ -67,12 +67,12 @@ According to the protocol definition, divide the value by **10** to obtain the a
 | Attribute       | Data Type | Description                                                     |
 | --------------- | --------- | --------------------------------------------------------------- |
 | writeRsp        | N/A       | Read/write response acknowledgment                              |
-| acMode          | int       | 1: Input, 2: Output                                             |
+| acMode          | int       | 1: Input/Charging, 2: Output/Discharging                        |
 | inputLimit      | int       | AC charging power limit                                         |
 | outputLimit     | int       | Output power limit                                              |
 | socSet          | int       | 700-1000: 70%-100%                                              |
 | minSoc          | int       | 0-500: 0%-50%                                                   |
 | gridReverse     | int       | 0: Disabled, 1: Allowed reverse flow, 2: Forbidden reverse flow |
 | inverseMaxPower | int       | Maximum output power limit                                      |
-| gridStandard    | int       | Grid connection standard 0: Germany 1: France 2: Austria        |
+| gridStandard    | int       | Grid connection standard 0: Germany 1: France 2: Austria 3: Switzerland  |
 | smartMode       | int       | 1: The setting parameter is not written to flash. After an unexpected power loss and restart, the device will use the value stored in flash.	0: The setting parameter is written to flash. If you frequently set device properties, set this to 1.      |
