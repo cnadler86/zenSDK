@@ -1,0 +1,86 @@
+// Zendure System Status
+Number Zendure_Battery_Level "Battery Level [%d %%]" (gBattery) {channel="http:url:zendureStatus:batteryLevel"}
+Number Zendure_Battery_Voltage "Battery Voltage [%d mV]" (gBattery) {channel="http:url:zendureStatus:batteryVoltage"}
+Number:Power Zendure_Pack_Input_Power "Pack Input Power [%d W]" (gPower) {channel="http:url:zendureStatus:packInputPower"}
+Number:Power Zendure_Output_Pack_Power "Output Pack Power [%d W]" (gPower) {channel="http:url:zendureStatus:outputPackPower"}
+Number:Power Zendure_Output_Home_Power "Output Home Power [%d W]" (gPower) {channel="http:url:zendureStatus:outputHomePower"}
+Number:Power Zendure_Grid_Input_Power "Grid Input Power [%d W]" (gPower) {channel="http:url:zendureStatus:gridInputPower"}
+Number:Power Zendure_Solar_Input_Power "Solar Input Power [%d W]" (gPower) {channel="http:url:zendureStatus:solarInputPower"}
+Number:Power Zendure_Solar_Power_1 "Solar Power 1 [%d W]" (gPower) {channel="http:url:zendureStatus:solarPower1"}
+Number:Power Zendure_Solar_Power_2 "Solar Power 2 [%d W]" (gPower) {channel="http:url:zendureStatus:solarPower2"}
+Number Zendure_Remaining_Time "Remaining Time [%d min]" {channel="http:url:zendureStatus:remainingTime"}
+
+Number Zendure_Pack_State "Pack State [MAP(zendure_state.map):%s]" {channel="http:url:zendureStatus:packState"}
+Number Zendure_Grid_State "Grid State [MAP(zendure_grid.map):%s]" {channel="http:url:zendureStatus:gridState"}
+Number Zendure_AC_Status "AC Status [%d]" {channel="http:url:zendureStatus:acStatus"}
+Number Zendure_DC_Status "DC Status [MAP(zendure_dcstatus.map):%s]" {channel="http:url:zendureStatus:dcStatus"}
+Number Zendure_PV_Status "PV Status [MAP(zendure_pvstatus.map):%s]" {channel="http:url:zendureStatus:pvStatus"}
+Number Zendure_Hyper_Temp "Temperature [%.1f °C]" {channel="http:url:zendureStatus:hyperTmp"}
+Number Zendure_Pack_Num "Pack Number [%d]" {channel="http:url:zendureStatus:packNum"}
+Number Zendure_RSSI "RSSI [%d dBm]" {channel="http:url:zendureStatus:rssi"}
+Number Zendure_Reverse_State "Reverse State [%d]" {channel="http:url:zendureStatus:reverseState"}
+Number Zendure_SOC_Status "SOC Status [%d]" {channel="http:url:zendureStatus:socStatus"}
+Number Zendure_SOC_Limit "SOC Limit [%d]" {channel="http:url:zendureStatus:socLimit"}
+Number:Power Zendure_Grid_Off_Power "Grid Off Power [%d W]" (gPower) {channel="http:url:zendureStatus:gridOffPower"}
+Number Zendure_Data_Ready "Data Ready [%d]" {channel="http:url:zendureStatus:dataReady"}
+
+// Zendure Configuration (Read-Only)
+Number Zendure_AC_Mode "AC Mode [%d]" {channel="http:url:zendureStatus:acMode"}
+Number Zendure_Input_Limit "Input Limit [%d W]" {channel="http:url:zendureStatus:inputLimit"}
+Number Zendure_Output_Limit "Output Limit [%d W]" {channel="http:url:zendureStatus:outputLimit"}
+Number Zendure_SOC_Set "SOC Set [%d]" {channel="http:url:zendureStatus:socSet"}
+Number Zendure_Min_SOC "Min SOC [%d]" {channel="http:url:zendureStatus:minSoc"}
+Number Zendure_Grid_Standard "Grid Standard [MAP(zendure_gridstandard.map):%s]" {channel="http:url:zendureStatus:gridStandard"}
+Number Zendure_Grid_Reverse "Grid Reverse [MAP(zendure_gridreverse.map):%s]" {channel="http:url:zendureStatus:gridReverse"}
+Number Zendure_Inverse_Max_Power "Inverse Max Power [%d W]" {channel="http:url:zendureStatus:inverseMaxPower"}
+Number Zendure_Lamp_Switch "Lamp Switch [%d]" {channel="http:url:zendureStatus:lampSwitch"}
+Number Zendure_Grid_Off_Mode "Grid Off Mode [%d]" {channel="http:url:zendureStatus:gridOffMode"}
+Number Zendure_IOT_State "IOT State [%d]" {channel="http:url:zendureStatus:IOTState"}
+Number Zendure_Fan_Switch "Fan Switch [%d]" {channel="http:url:zendureStatus:fanSwitch"}
+Number Zendure_Fan_Speed "Fan Speed [%d]" {channel="http:url:zendureStatus:fanSpeed"}
+Number Zendure_Fault_Level "Fault Level [%d]" {channel="http:url:zendureStatus:faultLevel"}
+Number Zendure_Pass "Pass [%d]" {channel="http:url:zendureStatus:pass"}
+Number Zendure_Smart_Mode "Smart Mode [%d]" {channel="http:url:zendureStatus:smartMode"}
+Number Zendure_Charge_Max_Limit "Charge Max Limit [%d W]" {channel="http:url:zendureStatus:chargeMaxLimit"}
+Number Zendure_Phase_Switch "Phase Switch [%d]" {channel="http:url:zendureStatus:phaseSwitch"}
+Number Zendure_Timestamp "Timestamp [%d]" {channel="http:url:zendureStatus:timestamp"}
+Number Zendure_Time_Zone "Time Zone [%d]" {channel="http:url:zendureStatus:timeZone"}
+
+// Zendure Control Channels (Write)
+Number Zendure_AC_Mode_Control "AC Mode Control" {channel="http:url:zendureControl:acModeControl"}
+Number Zendure_Input_Limit_Control "Input Limit Control [%d W]" {channel="http:url:zendureControl:inputLimitControl"}
+Number Zendure_Output_Limit_Control "Output Limit Control [%d W]" {channel="http:url:zendureControl:outputLimitControl"}
+Number Zendure_SOC_Set_Control "Charging Limit Control [%d %%]" {channel="http:url:zendureControl:socSetControl"}
+Number Zendure_Min_SOC_Control "Discharge Limit Control [%d %%]" {channel="http:url:zendureControl:minSocControl"}
+Number Zendure_Grid_Reverse_Control "Grid Reverse Control" {channel="http:url:zendureControl:gridReverseControl"}
+Number Zendure_Inverse_Max_Power_Control "Max Output Power Control [%d W]" {channel="http:url:zendureControl:inverseMaxPowerControl"}
+Number Zendure_Grid_Standard_Control "Grid Standard Control" {channel="http:url:zendureControl:gridStandardControl"}
+Number Zendure_Smart_Mode_Control "Smart Mode Control" {channel="http:url:zendureControl:smartModeControl"}
+
+// Battery Pack 1
+String Zendure_Pack1_SN "Pack 1 SN [%s]" {channel="http:url:zendureStatus:pack1SerialNumber"}
+Number Zendure_Pack1_Type "Pack 1 Type [%d]" {channel="http:url:zendureStatus:pack1PackType"}
+Number Zendure_Pack1_SOC "Pack 1 SOC [%d %%]" (gBattery) {channel="http:url:zendureStatus:pack1SocLevel"}
+Number Zendure_Pack1_State "Pack 1 State [%d]" {channel="http:url:zendureStatus:pack1State"}
+Number:Power Zendure_Pack1_Power "Pack 1 Power [%d W]" (gPower) {channel="http:url:zendureStatus:pack1Power"}
+Number Zendure_Pack1_MaxTemp "Pack 1 Max Temp [%.1f °C]" {channel="http:url:zendureStatus:pack1MaxTemp"}
+Number Zendure_Pack1_Voltage "Pack 1 Voltage [%d mV]" {channel="http:url:zendureStatus:pack1Voltage"}
+Number Zendure_Pack1_Current "Pack 1 Current [%d mA]" {channel="http:url:zendureStatus:pack1Current"}
+Number Zendure_Pack1_MaxVol "Pack 1 Max Vol [%d]" {channel="http:url:zendureStatus:pack1MaxVol"}
+Number Zendure_Pack1_MinVol "Pack 1 Min Vol [%d]" {channel="http:url:zendureStatus:pack1MinVol"}
+Number Zendure_Pack1_SoftVersion "Pack 1 SW Version [%d]" {channel="http:url:zendureStatus:pack1SoftVersion"}
+Number Zendure_Pack1_HeatState "Pack 1 Heat State [%d]" {channel="http:url:zendureStatus:pack1HeatState"}
+
+// Battery Pack 2
+String Zendure_Pack2_SN "Pack 2 SN [%s]" {channel="http:url:zendureStatus:pack2SerialNumber"}
+Number Zendure_Pack2_Type "Pack 2 Type [%d]" {channel="http:url:zendureStatus:pack2PackType"}
+Number Zendure_Pack2_SOC "Pack 2 SOC [%d %%]" (gBattery) {channel="http:url:zendureStatus:pack2SocLevel"}
+Number Zendure_Pack2_State "Pack 2 State [%d]" {channel="http:url:zendureStatus:pack2State"}
+Number:Power Zendure_Pack2_Power "Pack 2 Power [%d W]" (gPower) {channel="http:url:zendureStatus:pack2Power"}
+Number Zendure_Pack2_MaxTemp "Pack 2 Max Temp [%.1f °C]" {channel="http:url:zendureStatus:pack2MaxTemp"}
+Number Zendure_Pack2_Voltage "Pack 2 Voltage [%d mV]" {channel="http:url:zendureStatus:pack2Voltage"}
+Number Zendure_Pack2_Current "Pack 2 Current [%d mA]" {channel="http:url:zendureStatus:pack2Current"}
+Number Zendure_Pack2_MaxVol "Pack 2 Max Vol [%d]" {channel="http:url:zendureStatus:pack2MaxVol"}
+Number Zendure_Pack2_MinVol "Pack 2 Min Vol [%d]" {channel="http:url:zendureStatus:pack2MinVol"}
+Number Zendure_Pack2_SoftVersion "Pack 2 SW Version [%d]" {channel="http:url:zendureStatus:pack2SoftVersion"}
+Number Zendure_Pack2_HeatState "Pack 2 Heat State [%d]" {channel="http:url:zendureStatus:pack2HeatState"}
