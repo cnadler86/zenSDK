@@ -15,6 +15,7 @@
 
 | Attribute   | Data Type | Description                                                                                                                                                                                                                                                              |
 | ----------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| sn          | string    | Serial number of the battery pack                                                                                                                                                                                                                                        |
 | packType    | int       | Not used                                                                                                                                                                                                                                                                 |
 | socLevel    | int       | Battery charge level                                                                                                                                                                                                                                                     |
 | state       | int       | 0: Standby, 1: Charging, 2: Discharging                                                                                                                                                                                                                                  |
@@ -25,6 +26,7 @@
 | maxVol      | int       | Maximum cell voltage, stored in units of 0.01V. The conversion formula to actual voltage:`maxVol / 100.0` (Unit: V)                                                                                                                                                    |
 | minVol      | int       | Minimum cell voltage, stored in units of 0.01V. The conversion formula to actual voltage:`minVol / 100.0` (Unit: V)                                                                                                                                                    |
 | softVersion | int       | Software version                                                                                                                                                                                                                                                         |
+| heatState   | int       | Heating state (0: Not heating, 1: Heating)                                                                                                                                                                                                                               |
 
 **Battery Current (batcur) Data Conversion Description**
 
@@ -50,6 +52,10 @@ According to the protocol definition, divide the value by **10** to obtain the a
 | solarInputPower | int       | Total solar input power                                              |
 | solarPower1     | int       | Solar line 1 input power                                             |
 | solarPower2     | int       | Solar line 2 input power                                             |
+| solarPower3     | int       | Solar line 3 input power                                             |
+| solarPower4     | int       | Solar line 4 input power                                             |
+| solarPower5     | int       | Solar line 5 input power                                             |
+| solarPower6     | int       | Solar line 6 input power                                             |
 | pass            | int       | 0: No, 1: Yes                                                        |
 | reverseState    | int       | 0: No, 1: Reverse flow                                               |
 | socStatus       | int       | 0: No, 1: Calibrating                                                |
@@ -59,8 +65,30 @@ According to the protocol definition, divide the value by **10** to obtain the a
 | acStatus        | int       | 0: Stopped, 1: Grid-connected operation, 2: Charging operation       |
 | dataReady       | int       | 0: Not ready, 1: Ready                                               |
 | gridState       | int       | 0: Not connected, 1: Connected                                       |
+| BatVolt         | int       | Battery voltage (unit: 0.01V)                                        |
 | FMVolt          | int       | Voltage activation - Voltage value                                   |
 | socLimit        | int       | 0: Normal state, 1: Charge limit reached, 2: Discharge limit reached |
+| rssi            | int       | Signal strength (unit: dBm)                                          |
+| gridOffPower    | int       | Grid off power                                                       |
+| lampSwitch      | int       | Lamp switch state (0: Off, 1: On)                                    |
+| gridOffMode     | int       | Grid off mode setting                                                |
+| IOTState        | int       | IOT connection state                                                 |
+| fanSwitch       | int       | Fan switch state (0: Off, 1: On)                                     |
+| fanSpeed        | int       | Fan speed level                                                      |
+| faultLevel      | int       | Fault level indicator                                                |
+| bindstate       | int       | Device bind state                                                    |
+| VoltWakeup      | int       | Voltage wakeup setting                                               |
+| OldMode         | int       | Old mode setting                                                     |
+| OTAState        | int       | OTA (Over-The-Air) update state                                      |
+| LCNState        | int       | LCN state                                                            |
+| factoryModeState| int       | Factory mode state                                                   |
+| timestamp       | int       | System timestamp                                                     |
+| ts              | int       | Timestamp (Unix epoch time)                                          |
+| timeZone        | int       | Time zone setting                                                    |
+| tsZone          | int       | Timezone offset                                                      |
+| chargeMaxLimit  | int       | Maximum charge limit (unit: W)                                       |
+| phaseSwitch     | int       | Phase switch setting                                                 |
+| is_error        | int       | Error indication flag (0: No error, 1: Error present)                |
 
 ## **Device Data Properties - Read/Write**
 
