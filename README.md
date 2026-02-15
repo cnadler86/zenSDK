@@ -156,6 +156,7 @@ Content-Type: application/json
 - [C#](./examples/C%23/demo.cs)
 - [Java](./examples/Java/demo.java)
 - [JavaScript](./examples/JavaScript/demo.js)
+- [openHAB](./examples/openHAB/zendure.things)
 - [PHP](./examples/PHP/demo.php)
 - [Python](./examples/Python/demo.py)
 - [CLI quick test](#command-line-quick-test)

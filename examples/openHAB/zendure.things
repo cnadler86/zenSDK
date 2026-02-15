@@ -1,0 +1,171 @@
+// Zendure SolarFlow Status (GET)
+Thing http:url:zendureStatus "Zendure Status" [
+    baseURL="http://<server-ip>/properties/report",
+    refresh=15] {
+        Channels:
+            Type number : batteryLevel "Battery Level %" [
+                stateTransformation="JSONPATH:$.properties.electricLevel" ]
+            Type number : batteryVoltage "Battery Voltage mV" [
+                stateTransformation="JSONPATH:$.properties.BatVolt" ]
+            Type number : packInputPower "Pack Input Power W" [
+                stateTransformation="JSONPATH:$.properties.packInputPower" ]
+            Type number : outputHomePower "Output Home Power W" [
+                stateTransformation="JSONPATH:$.properties.outputHomePower" ]
+            Type number : gridInputPower "Grid Input Power W" [
+                stateTransformation="JSONPATH:$.properties.gridInputPower" ]
+            Type number : solarInputPower "Solar Input Power W" [
+                stateTransformation="JSONPATH:$.properties.solarInputPower" ]
+            Type number : remainingTime "Remaining Time min" [
+                stateTransformation="JSONPATH:$.properties.remainOutTime" ]
+            Type number : packState "Pack State" [
+                stateTransformation="JSONPATH:$.properties.packState" ]
+            Type number : gridState "Grid State" [
+                stateTransformation="JSONPATH:$.properties.gridState" ]
+            Type number : acStatus "AC Status" [
+                stateTransformation="JSONPATH:$.properties.acStatus" ]
+            Type number : dcStatus "DC Status" [
+                stateTransformation="JSONPATH:$.properties.dcStatus" ]
+            Type number : pvStatus "PV Status" [
+                stateTransformation="JSONPATH:$.properties.pvStatus" ]
+            Type number : hyperTmp "Hyper Temperature" [
+                stateTransformation="JSONPATH:$.properties.hyperTmp" ]
+            Type number : solarPower1 "Solar Power 1 W" [
+                stateTransformation="JSONPATH:$.properties.solarPower1" ]
+            Type number : solarPower2 "Solar Power 2 W" [
+                stateTransformation="JSONPATH:$.properties.solarPower2" ]
+            Type number : packNum "Pack Number" [
+                stateTransformation="JSONPATH:$.properties.packNum" ]
+            Type number : rssi "RSSI dBm" [
+                stateTransformation="JSONPATH:$.properties.rssi" ]
+            Type number : outputPackPower "Output Pack Power W" [
+                stateTransformation="JSONPATH:$.properties.outputPackPower" ]
+            Type number : reverseState "Reverse State" [
+                stateTransformation="JSONPATH:$.properties.reverseState" ]
+            Type number : socStatus "SOC Status" [
+                stateTransformation="JSONPATH:$.properties.socStatus" ]
+            Type number : socLimit "SOC Limit Status" [
+                stateTransformation="JSONPATH:$.properties.socLimit" ]
+            Type number : gridOffPower "Grid Off Power W" [
+                stateTransformation="JSONPATH:$.properties.gridOffPower" ]
+            Type number : dataReady "Data Ready" [
+                stateTransformation="JSONPATH:$.properties.dataReady" ]
+            Type number : acMode "AC Mode" [
+                stateTransformation="JSONPATH:$.properties.acMode" ]
+            Type number : inputLimit "Input Limit W" [
+                stateTransformation="JSONPATH:$.properties.inputLimit" ]
+            Type number : outputLimit "Output Limit W" [
+                stateTransformation="JSONPATH:$.properties.outputLimit" ]
+            Type number : socSet "SOC Set" [
+                stateTransformation="JSONPATH:$.properties.socSet" ]
+            Type number : minSoc "Min SOC" [
+                stateTransformation="JSONPATH:$.properties.minSoc" ]
+            Type number : gridStandard "Grid Standard" [
+                stateTransformation="JSONPATH:$.properties.gridStandard" ]
+            Type number : gridReverse "Grid Reverse" [
+                stateTransformation="JSONPATH:$.properties.gridReverse" ]
+            Type number : inverseMaxPower "Inverse Max Power W" [
+                stateTransformation="JSONPATH:$.properties.inverseMaxPower" ]
+            Type number : lampSwitch "Lamp Switch" [
+                stateTransformation="JSONPATH:$.properties.lampSwitch" ]
+            Type number : gridOffMode "Grid Off Mode" [
+                stateTransformation="JSONPATH:$.properties.gridOffMode" ]
+            Type number : IOTState "IOT State" [
+                stateTransformation="JSONPATH:$.properties.IOTState" ]
+            Type number : fanSwitch "Fan Switch" [
+                stateTransformation="JSONPATH:$.properties.fanSwitch" ]
+            Type number : fanSpeed "Fan Speed" [
+                stateTransformation="JSONPATH:$.properties.fanSpeed" ]
+            Type number : faultLevel "Fault Level" [
+                stateTransformation="JSONPATH:$.properties.faultLevel" ]
+            Type number : pass "Pass" [
+                stateTransformation="JSONPATH:$.properties.pass" ]
+            Type number : smartMode "Smart Mode" [
+                stateTransformation="JSONPATH:$.properties.smartMode" ]
+            Type number : chargeMaxLimit "Charge Max Limit W" [
+                stateTransformation="JSONPATH:$.properties.chargeMaxLimit" ]
+            Type number : phaseSwitch "Phase Switch" [
+                stateTransformation="JSONPATH:$.properties.phaseSwitch" ]
+            Type number : timestamp "Timestamp" [
+                stateTransformation="JSONPATH:$.properties.ts" ]
+            Type number : timeZone "Time Zone" [
+                stateTransformation="JSONPATH:$.properties.tsZone" ]
+            
+            // Individual Battery Pack Data (Pack 1)
+            Type string : pack1SerialNumber "Pack 1 SN" [
+                stateTransformation="JSONPATH:$.packData[0].sn" ]
+            Type number : pack1PackType "Pack 1 Type" [
+                stateTransformation="JSONPATH:$.packData[0].packType" ]
+            Type number : pack1SocLevel "Pack 1 SOC %" [
+                stateTransformation="JSONPATH:$.packData[0].socLevel" ]
+            Type number : pack1State "Pack 1 State" [
+                stateTransformation="JSONPATH:$.packData[0].state" ]
+            Type number : pack1Power "Pack 1 Power W" [
+                stateTransformation="JSONPATH:$.packData[0].power" ]
+            Type number : pack1MaxTemp "Pack 1 Max Temp" [
+                stateTransformation="JSONPATH:$.packData[0].maxTemp" ]
+            Type number : pack1Voltage "Pack 1 Voltage mV" [
+                stateTransformation="JSONPATH:$.packData[0].totalVol" ]
+            Type number : pack1Current "Pack 1 Current mA" [
+                stateTransformation="JSONPATH:$.packData[0].batcur" ]
+            Type number : pack1MaxVol "Pack 1 Max Vol" [
+                stateTransformation="JSONPATH:$.packData[0].maxVol" ]
+            Type number : pack1MinVol "Pack 1 Min Vol" [
+                stateTransformation="JSONPATH:$.packData[0].minVol" ]
+            Type number : pack1SoftVersion "Pack 1 SW Version" [
+                stateTransformation="JSONPATH:$.packData[0].softVersion" ]
+            Type number : pack1HeatState "Pack 1 Heat State" [
+                stateTransformation="JSONPATH:$.packData[0].heatState" ]
+            
+            // Individual Battery Pack Data (Pack 2)
+            Type string : pack2SerialNumber "Pack 2 SN" [
+                stateTransformation="JSONPATH:$.packData[1].sn" ]
+            Type number : pack2PackType "Pack 2 Type" [
+                stateTransformation="JSONPATH:$.packData[1].packType" ]
+            Type number : pack2SocLevel "Pack 2 SOC %" [
+                stateTransformation="JSONPATH:$.packData[1].socLevel" ]
+            Type number : pack2State "Pack 2 State" [
+                stateTransformation="JSONPATH:$.packData[1].state" ]
+            Type number : pack2Power "Pack 2 Power W" [
+                stateTransformation="JSONPATH:$.packData[1].power" ]
+            Type number : pack2MaxTemp "Pack 2 Max Temp" [
+                stateTransformation="JSONPATH:$.packData[1].maxTemp" ]
+            Type number : pack2Voltage "Pack 2 Voltage mV" [
+                stateTransformation="JSONPATH:$.packData[1].totalVol" ]
+            Type number : pack2Current "Pack 2 Current mA" [
+                stateTransformation="JSONPATH:$.packData[1].batcur" ]
+            Type number : pack2MaxVol "Pack 2 Max Vol" [
+                stateTransformation="JSONPATH:$.packData[1].maxVol" ]
+            Type number : pack2MinVol "Pack 2 Min Vol" [
+                stateTransformation="JSONPATH:$.packData[1].minVol" ]
+            Type number : pack2SoftVersion "Pack 2 SW Version" [
+                stateTransformation="JSONPATH:$.packData[1].softVersion" ]
+            Type number : pack2HeatState "Pack 2 Heat State" [
+                stateTransformation="JSONPATH:$.packData[1].heatState" ]
+}
+
+// Zendure SolarFlow Control (POST)
+Thing http:url:zendureControl "Zendure Control" [
+    baseURL="http://<server-ip>/properties/write",
+    refresh=604800,
+    commandMethod="POST",
+    contentType="application/json"] {
+        Channels:
+            Type number : acModeControl "AC Mode Control" [
+                commandTransformation="JS:zendure_control.js?property=acMode" ]
+            Type number : inputLimitControl "Input Limit Control W" [
+                commandTransformation="JS:zendure_control.js?property=inputLimit" ]
+            Type number : outputLimitControl "Output Limit Control W" [
+                commandTransformation="JS:zendure_control.js?property=outputLimit" ]
+            Type number : socSetControl "Charging Limit %" [
+                commandTransformation="JS:zendure_control.js?property=socSet" ]
+            Type number : minSocControl "Discharge Limit %" [
+                commandTransformation="JS:zendure_control.js?property=minSoc" ]
+            Type number : gridReverseControl "Grid Reverse Control" [
+                commandTransformation="JS:zendure_control.js?property=gridReverse" ]
+            Type number : inverseMaxPowerControl "Max Output Power W" [
+                commandTransformation="JS:zendure_control.js?property=inverseMaxPower" ]
+            Type number : gridStandardControl "Grid Standard" [
+                commandTransformation="JS:zendure_control.js?property=gridStandard" ]
+            Type number : smartModeControl "Smart Mode" [
+                commandTransformation="JS:zendure_control.js?property=smartMode" ]
+}
