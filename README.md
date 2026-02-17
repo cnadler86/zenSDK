@@ -3,7 +3,7 @@
 ---
 
 <p align="center">
-  <img src="https://zendure.com/cdn/shop/files/zendure-logo-infinity-charge_240x.png?v=1717728038" alt="Zendure Logo" width="240">
+  <img src="https://cdn.shopify.com/s/files/1/0720/4379/0616/files/logo.svg?v=1769137163&width=1920" alt="Zendure Logo" width="240">
 </p>
 
 # 📖 Documentation Navigator
