@@ -137,11 +137,13 @@ current_A = value / 10.0;
 | minSoc | int | RW | % | 0-50 | Minimum SOC |
 | gridReverse | int | RW | — | 0-2 | Reverse flow control |
 | inverseMaxPower | int | RW | W | — | Max inverter output |
-| gridStandard | int | RW | — | 0-3 | Grid standard |
+| gridStandard | int | RW | — | 0-9 | 0: Germany 1: France 2: Austria 3: Switzerland 4: Netherlands 5: Spain 6: Belgium 7: Greece 8: Denmark 9: Italy|
 | smartMode | int | RW | — | 0-1 | Flash write behavior |
 | batCalTime | int | RW | — | - | Unit: minutes. Unauthorized modifications are not recommended |
 | Fanmode | int | RW | — | 0-1 | 0: Fan off 1: Fan on. Unauthorized modification is not recommended. |
 | Fanspeed | int | RW | — | 0-1 | 0: Auto; 1: 1st gear; 2: 2nd gear. Unauthorized modification is not recommended. |
+| gridOffMode | int | RW | — | 0-2 | 0: Standard Mode 1: Economic Mode 2: Closure |
+
 ### smartMode Behavior
 
 - 1: Parameters are not written to flash
