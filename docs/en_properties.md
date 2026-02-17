@@ -4,103 +4,160 @@
  * @LastEditors: dav1dBoy 492664938@qq.com
  * @LastEditTime: 2026-01-04 14:40:33
  * @FilePath: /zenSDK/docs/en_properties.md
- * @Description: 
- * 
- * Copyright (c) 2025 by Zendure, All Rights Reserved. 
+ * @Description:
+ *
+ * Copyright (c) 2025 by Zendure, All Rights Reserved.
 -->
 
-# **SolarFlow 800** **SolarFlow 800 PRO/AC** **SolarFlow 800 PRO/AC** **SolarFlow 2400AC** 
+# SolarFlow Generic
 
-## **Battery Pack Data Properties**
+Unified property definition for SolarFlow series devices.
 
-| Attribute   | Data Type | Description                                                                                                                                                                                                                                                              |
-| ----------- | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| sn          | string    | Serial number of the battery pack                                                                                                                                                                                                                                        |
-| packType    | int       | Not used                                                                                                                                                                                                                                                                 |
-| socLevel    | int       | Battery charge level                                                                                                                                                                                                                                                     |
-| state       | int       | 0: Standby, 1: Charging, 2: Discharging                                                                                                                                                                                                                                  |
-| power       | int       | Battery pack power                                                                                                                                                                                                                                                       |
-| maxTemp     | int       | Maximum battery temperature (maxTemp) is stored as one-tenth of the Kelvin temperature. The conversion formula to Celsius (°C) is:`float maxTemp_Celsius = (maxTemp - 2731) / 10.0; // Unit: °C`                                                                     |
-| totalVol    | int       | Total voltage                                                                                                                                                                                                                                                            |
-| batcur      | int       | The raw batcur data is stored as a 16-bit two’s complement value in a uint8_t[2] array.During parsing, it needs to be converted into a signed 16-bit integer.According to the protocol definition, divide the value by 10 to obtain the actual current, in amperes (A). |
-| maxVol      | int       | Maximum cell voltage, stored in units of 0.01V. The conversion formula to actual voltage:`maxVol / 100.0` (Unit: V)                                                                                                                                                    |
-| minVol      | int       | Minimum cell voltage, stored in units of 0.01V. The conversion formula to actual voltage:`minVol / 100.0` (Unit: V)                                                                                                                                                    |
-| softVersion | int       | Software version                                                                                                                                                                                                                                                         |
-| heatState   | int       | Heating state (0: Not heating, 1: Heating)                                                                                                                                                                                                                               |
+---
 
-**Battery Current (batcur) Data Conversion Description**
+## Document Conventions
 
-The raw **batcur** data is stored as a **16-bit two’s complement** value in a **uint8_t[2]** array.
+- Power unit: W
+- Voltage unit: V
+- Temperature storage: 0.1 Kelvin unless stated otherwise
+- Bit fields are defined in dedicated sections
+- Ranges are inclusive
+- Unless otherwise specified, all `int` values are non-negative
 
-During parsing, it needs to be converted into a **signed 16-bit integer**.
+---
 
-According to the protocol definition, divide the value by **10** to obtain the actual current, in **amperes (A)**.
+## Table Template 
 
-## **Device Data Properties - Read-Only**
+Use this template when adding new property tables.
 
-| Attribute       | Data Type | Description                                                          |
-| --------------- | --------- | -------------------------------------------------------------------- |
-| heatState       | int       | 0: Not heating, 1: Heating                                           |
-| packInputPower  | int       | Battery pack input power (discharging)                               |
-| outputPackPower | int       | Output power to battery pack (charging)                              |
-| outputHomePower | int       | Output power to home electricity                                     |
-| remainOutTime   | int       | Remaining discharge time (unit: minutes)                             |
-| packState       | int       | 0: Standby, 1: Charging, 2: Discharging                              |
-| packNum         | int       | Number of battery packs                                              |
-| electricLevel   | int       | Average battery pack charge level                                    |
-| gridInputPower  | int       | Grid input power                                                     |
-| solarInputPower | int       | Total solar input power                                              |
-| solarPower1     | int       | Solar line 1 input power                                             |
-| solarPower2     | int       | Solar line 2 input power                                             |
-| solarPower3     | int       | Solar line 3 input power                                             |
-| solarPower4     | int       | Solar line 4 input power                                             |
-| solarPower5     | int       | Solar line 5 input power                                             |
-| solarPower6     | int       | Solar line 6 input power                                             |
-| pass            | int       | 0: No, 1: Yes                                                        |
-| reverseState    | int       | 0: No, 1: Reverse flow                                               |
-| socStatus       | int       | 0: No, 1: Calibrating                                                |
-| hyperTmp        | int       | Enclosure temperature                                                |
-| dcStatus        | int       | 0: Stopped, 1: Battery input, 2: Battery output                      |
-| pvStatus        | int       | 0: Stopped, 1: Running                                               |
-| acStatus        | int       | 0: Stopped, 1: Grid-connected operation, 2: Charging operation       |
-| dataReady       | int       | 0: Not ready, 1: Ready                                               |
-| gridState       | int       | 0: Not connected, 1: Connected                                       |
-| BatVolt         | int       | Battery voltage (unit: 0.01V)                                        |
-| FMVolt          | int       | Voltage activation - Voltage value                                   |
-| socLimit        | int       | 0: Normal state, 1: Charge limit reached, 2: Discharge limit reached |
-| rssi            | int       | Signal strength (unit: dBm)                                          |
-| gridOffPower    | int       | Grid off power                                                       |
-| lampSwitch      | int       | Lamp switch state (0: Off, 1: On)                                    |
-| gridOffMode     | int       | Grid off mode setting                                                |
-| IOTState        | int       | IOT connection state                                                 |
-| fanSwitch       | int       | Fan switch state (0: Off, 1: On)                                     |
-| fanSpeed        | int       | Fan speed level                                                      |
-| faultLevel      | int       | Fault level indicator                                                |
-| bindstate       | int       | Device bind state                                                    |
-| VoltWakeup      | int       | Voltage wakeup setting                                               |
-| OldMode         | int       | Old mode setting                                                     |
-| OTAState        | int       | OTA (Over-The-Air) update state                                      |
-| LCNState        | int       | LCN state                                                            |
-| factoryModeState| int       | Factory mode state                                                   |
-| timestamp       | int       | System timestamp                                                     |
-| ts              | int       | Timestamp (Unix epoch time)                                          |
-| timeZone        | int       | Time zone setting                                                    |
-| tsZone          | int       | Timezone offset                                                      |
-| chargeMaxLimit  | int       | Maximum charge limit (unit: W)                                       |
-| phaseSwitch     | int       | Phase switch setting                                                 |
-| is_error        | int       | Error indication flag (0: No error, 1: Error present)                |
+| Attribute | Type | Access | Unit | Range | Description |
+|-----------|------|--------|------|-------|------------|
+| example | int | RO/RW | W | 0-100 | Description here |
 
-## **Device Data Properties - Read/Write**
+Access values:
 
-| Attribute       | Data Type | Description                                                     |
-| --------------- | --------- | --------------------------------------------------------------- |
-| writeRsp        | N/A       | Read/write response acknowledgment                              |
-| acMode          | int       | 1: Input/Charging, 2: Output/Discharging                        |
-| inputLimit      | int       | AC charging power limit                                         |
-| outputLimit     | int       | Output power limit                                              |
-| socSet          | int       | 700-1000: 70%-100%                                              |
-| minSoc          | int       | 0-500: 0%-50%                                                   |
-| gridReverse     | int       | 0: Disabled, 1: Allowed reverse flow, 2: Forbidden reverse flow |
-| inverseMaxPower | int       | Maximum output power limit                                      |
-| gridStandard    | int       | Grid connection standard 0: Germany 1: France 2: Austria 3: Switzerland  |
-| smartMode       | int       | 1: The setting parameter is not written to flash. After an unexpected power loss and restart, the device will use the value stored in flash.	0: The setting parameter is written to flash. If you frequently set device properties, set this to 1.      |
+- RO: Read Only
+- RW: Read / Write
+
+---
+
+## Battery Pack Data Properties
+
+| Attribute | Type | Access | Unit | Range | Description |
+|-----------|------|--------|------|-------|------------|
+| sn | string | RO | — | — | Battery pack serial number |
+| packType | int | RO | — | — | Reserved |
+| socLevel | int | RO | % | 0-100 | State of charge |
+| state | int | RO | — | 0-2 | 0 Standby, 1 Charging, 2 Discharging |
+| power | int | RO | W | — | Battery pack power |
+| maxTemp | int | RO | 0.1K | — | Stored temperature value |
+| totalVol | int | RO | V | — | Total voltage |
+| batcur | int | RO | A | — | Battery current, see conversion |
+| maxVol | int | RO | 0.01V | — | Max cell voltage |
+| minVol | int | RO | 0.01V | — | Min cell voltage |
+| softVersion | int | RO | — | — | Firmware version |
+| heatState | int | RO | — | 0-1 | Heating state |
+
+### Temperature Conversion
+
+float maxTemp_C = (maxTemp - 2731) / 10.0;
+
+### Battery Current Conversion
+
+Raw format: 16-bit two’s complement  
+Source container: uint8_t[2]  
+Convert to signed int16  
+
+current_A = value / 10.0;
+
+---
+
+## Device Data Properties — Read Only
+
+| Attribute | Type | Access | Unit | Range | Description |
+|-----------|------|--------|------|-------|------------|
+| heatState | int | RO | — | 0-1 | Heating state |
+| packInputPower | int | RO | W | — | Battery discharge power |
+| outputPackPower | int | RO | W | — | Battery charge power |
+| outputHomePower | int | RO | W | — | Output to home |
+| remainOutTime | int | RO | min | — | Remaining discharge time |
+| packState | int | RO | — | 0-2 | Pack state |
+| packNum | int | RO | — | — | Number of packs |
+| electricLevel | int | RO | % | 0-100 | Average SOC |
+| gridInputPower | int | RO | W | — | Grid input power |
+| solarInputPower | int | RO | W | — | Total PV input |
+| solarPower1~6 | int | RO | W | — | PV channel power |
+| pass | int | RO | — | 0-1 | Pass-through state |
+| reverseState | int | RO | — | 0-1 | Reverse flow state |
+| socStatus | int | RO | — | 0-1 | SOC calibration |
+| hyperTmp | int | RO | — | — | Enclosure temperature |
+| dcStatus | int | RO | — | 0-2 | DC state |
+| pvStatus | int | RO | — | 0-1 | PV state |
+| acStatus | int | RO | — | 0-2 | AC state |
+| dataReady | int | RO | — | 0-1 | Data ready flag |
+| gridState | int | RO | — | 0-1 | Grid connection state |
+| BatVolt | int | RO | 0.01V | — | Battery voltage |
+| FMVolt | int | RO | V | — | Voltage activation value |
+| socLimit | int | RO | — | 0-2 | SOC limit state |
+| rssi | int | RO | dBm | — | Signal strength |
+| gridOffPower | int | RO | W | — | Off-grid power |
+| lampSwitch | int | RO | — | 0-1 | Lamp state |
+| gridOffMode | int | RO | — | — | Off-grid mode |
+| IOTState | int | RO | — | — | IoT connection |
+| fanSwitch | int | RO | — | 0-1 | Fan state |
+| fanSpeed | int | RO | — | — | Fan level |
+| faultLevel | int | RO | — | — | Fault severity |
+| bindstate | int | RO | — | — | Bind state |
+| VoltWakeup | int | RO | — | — | Voltage wake-up |
+| OldMode | int | RO | — | — | Legacy mode |
+| OTAState | int | RO | — | — | OTA state |
+| LCNState | int | RO | — | — | LCN state |
+| factoryModeState | int | RO | — | — | Factory mode |
+| timestamp | int | RO | — | — | System timestamp |
+| ts | int | RO | — | — | Unix timestamp |
+| timeZone | int | RO | — | — | Timezone |
+| tsZone | int | RO | — | — | Timezone offset |
+| chargeMaxLimit | int | RO | W | — | Max charge power |
+| phaseSwitch | int | RO | — | — | Phase switch |
+| is_error | int | RO | — | 0-1 | Error flag |
+| acCouplingState | int | RO | — | - | AC Coupling State |
+| dryNodeState | int | RO | — | - | Dry contact status  1: Connected  0: Connected(May be reversed depending on actual wiring) |
+
+---
+
+## Device Data Properties — Read / Write
+
+| Attribute | Type | Access | Unit | Range | Description |
+|-----------|------|--------|------|-------|------------|
+| writeRsp | N/A | RW | — | — | Write response |
+| acMode | int | RW | — | 1-2 | Charge or discharge mode |
+| inputLimit | int | RW | W | — | AC charge limit |
+| outputLimit | int | RW | W | — | Output limit |
+| socSet | int | RW | % | 70-100 | Target SOC |
+| minSoc | int | RW | % | 0-50 | Minimum SOC |
+| gridReverse | int | RW | — | 0-2 | Reverse flow control |
+| inverseMaxPower | int | RW | W | — | Max inverter output |
+| gridStandard | int | RW | — | 0-3 | Grid standard |
+| smartMode | int | RW | — | 0-1 | Flash write behavior |
+| batCalTime | int | RW | — | - | Unit: minutes. Unauthorized modifications are not recommended |
+| Fanmode | int | RW | — | 0-1 | 0: Fan off 1: Fan on. Unauthorized modification is not recommended. |
+| Fanspeed | int | RW | — | 0-1 | 0: Auto; 1: 1st gear; 2: 2nd gear. Unauthorized modification is not recommended. |
+### smartMode Behavior
+
+- 1: Parameters are not written to flash
+- Device restores previous flash values after reboot
+- Recommended for frequent configuration changes
+
+---
+
+## Bit Field Definitions
+
+### AC Coupling State
+
+| Bit | Meaning |
+|-----|--------|
+| Bit0 | AC-coupled input present, auto-cleared by DSP |
+| Bit1 | AC input present flag |
+| Bit2 | AC-coupled overload |
+| Bit3 | Excess AC input power |
+
